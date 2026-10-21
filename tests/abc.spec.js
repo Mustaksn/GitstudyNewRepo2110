@@ -1,9 +1,11 @@
-const {test,expect}=require('@playwright/test')
+const {test,expect}=require('@playwright/test');
+const { url } = require('node:inspector');
 
 test('dialog test', async function({page}){
 
 
-  await page.goto('https://practice.expandtesting.com/js-dialogs');
+ const url= await page.goto('https://practice.expandtesting.com/js-dialogs');
+  await expect(url).toBe('https://practice.expandtesting.com/js-dialogs');
 
   // handling alert
   page.on('dialog', async dialog=>{
